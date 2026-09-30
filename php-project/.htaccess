@@ -1,0 +1,7 @@
+# ========================================================
+# বাসগো - বাস রিজার্ভেশন ম্যানেজমেন্ট সিস্টেম
+# Ultra Safe .htaccess (Zero 500 Error, Zero 403 Error)
+# ========================================================
+
+DirectoryIndex index.php login.php
+AddDefaultCharset UTF-8

@@ -1,0 +1,193 @@
+/* ========================================================
+   বাসগো - বাংলা বাস রিজার্ভেশন ম্যানেজমেন্ট সিস্টেম
+   কাস্টম সিএসএস ও প্রিন্ট স্টাইল
+   ======================================================== */
+
+body {
+    font-family: 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #2c3e50;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-wrapper {
+    flex: 1 0 auto;
+}
+
+/* কার্ড ও প্যানেল স্টাইলিং */
+.card {
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.card-header {
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    font-weight: 600;
+}
+
+/* স্ট্যাটাস কার্ডস */
+.stat-card {
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.06);
+}
+
+.stat-card .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* বাসের সিট লেআউট ডিজাইন */
+.bus-container {
+    background-color: #f8fafc;
+    border: 2px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 380px;
+    margin: 0 auto;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.bus-front {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #cbd5e1;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+.bus-driver-wheel {
+    width: 36px;
+    height: 36px;
+    border: 2px solid #64748b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.seat-pair {
+    display: flex;
+    gap: 8px;
+}
+
+.seat-aisle {
+    width: 32px;
+}
+
+/* সিটের বাটন স্টাইল */
+.seat-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    border: 1px solid #94a3b8;
+    background: #ffffff;
+    color: #1e293b;
+    user-select: none;
+    position: relative;
+}
+
+.seat-btn:hover:not(.booked):not(.blocked) {
+    background: #e2e8f0;
+    transform: scale(1.05);
+}
+
+.seat-btn.selected {
+    background-color: #16a34a !important;
+    border-color: #15803d !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 6px rgba(22, 163, 74, 0.3);
+}
+
+.seat-btn.booked {
+    background-color: #ef4444 !important;
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+.seat-btn.blocked {
+    background-color: #64748b !important;
+    border-color: #475569 !important;
+    color: #ffffff !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* সিট লিজেন্ড */
+.seat-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+}
+.seat-legend-color {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* প্রিন্ট স্টাইলিং (A4 ও Thermal POS) */
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 13px !important;
+    }
+    .no-print, .navbar, footer, .btn, .alert {
+        display: none !important;
+    }
+    .main-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .ticket-print-box {
+        max-width: 100% !important;
+        border: 1px solid #000 !important;
+        padding: 15px !important;
+        margin: 0 auto !important;
+        page-break-inside: avoid;
+    }
+    .thermal-receipt {
+        width: 80mm !important;
+        padding: 5mm !important;
+        margin: 0 auto !important;
+        font-family: monospace, 'Noto Sans Bengali' !important;
+        font-size: 11px !important;
+        border: none !important;
+    }
+}
